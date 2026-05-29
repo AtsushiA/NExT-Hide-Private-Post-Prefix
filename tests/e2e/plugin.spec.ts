@@ -1,8 +1,8 @@
-import { test, expect } from '@wordpress/e2e-test-utils-playwright';
+import { test, expect } from '@playwright/test';
 
 test.describe( 'NExT Hide Private Post Prefix', () => {
-	test( 'プラグインが有効化されている', async ( { admin, page } ) => {
-		await admin.visitAdminPage( 'plugins.php' );
+	test( 'プラグインが有効化されている', async ( { page, baseURL } ) => {
+		await page.goto( `${ baseURL }/wp-admin/plugins.php` );
 		const pluginRow = page.locator( 'tr[data-slug="next-hide-private-post-prefix"]' );
 		await expect( pluginRow ).toHaveClass( /active/ );
 	} );
