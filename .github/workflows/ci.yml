@@ -68,6 +68,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Remove local .wp-env.json so plugin-check-action creates its own
+        run: rm -f .wp-env.json
       - uses: wordpress/plugin-check-action@v1
         with:
           exclude-directories: 'vendor,tests,node_modules'
