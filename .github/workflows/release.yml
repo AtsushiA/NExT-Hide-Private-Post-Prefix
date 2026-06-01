@@ -18,7 +18,7 @@ jobs:
       - name: Get plugin metadata
         id: meta
         run: |
-          PLUGIN_SLUG=$(basename "$(pwd)")
+          PLUGIN_SLUG=$(basename "$(pwd)" | tr '[:upper:]' '[:lower:]')
           VERSION="${GITHUB_REF#refs/tags/}"
           echo "slug=${PLUGIN_SLUG}" >> "$GITHUB_OUTPUT"
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
