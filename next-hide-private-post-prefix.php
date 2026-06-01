@@ -11,6 +11,8 @@
  * License:           GPLv2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: nhpp
+ *
+ * @package NHPP
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -26,23 +28,23 @@ if ( ! defined( 'ABSPATH' ) ) {
  * セカンダリクエリにも適用される。
  * 管理画面・REST API は対象外。
  *
- * @param WP_Query $query 処理中のクエリオブジェクト
+ * @param WP_Query $query 処理中のクエリオブジェクト.
  */
 function nhpp_exclude_private_posts_from_loop( WP_Query $query ): void {
-	// 管理画面・REST API は対象外
+	// 管理画面・REST API は対象外.
 	if ( is_admin() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
 		return;
 	}
 
 	// プレビュー・単一記事は対象外
 	// （下書きプレビューは post_status が空のまま WordPress が内部処理するため、
-	// ここで 'publish' に上書きすると draft が見つからなくなる）
+	// ここで 'publish' に上書きすると draft が見つからなくなる。）.
 	if ( $query->is_preview() || $query->is_singular() ) {
 		return;
 	}
 
-	// ログインしていない場合は WordPress のデフォルト挙動に任せる
-	// （未ログインでは private 記事はもともと表示されない）
+	// ログインしていない場合は WordPress のデフォルト挙動に任せる。
+	// （未ログインでは private 記事はもともと表示されない。）.
 	if ( ! is_user_logged_in() ) {
 		return;
 	}
@@ -57,7 +59,7 @@ function nhpp_exclude_private_posts_from_loop( WP_Query $query ): void {
 	}
 
 	$post_status = array_map( 'trim', (array) $post_status );
-	$post_status = array_filter( $post_status, fn( $s ) => $s !== 'private' );
+	$post_status = array_filter( $post_status, fn( $s ) => 'private' !== $s );
 
 	// 'any' が含まれている場合は明示的に private を除いたリストに展開
 	if ( in_array( 'any', $post_status, true ) ) {

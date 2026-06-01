@@ -13,10 +13,23 @@ node_modules/
 npm-debug.log*
 yarn-error.log*
 
+# PHP
+vendor/
+
 # Build artifacts
-/vendor/
 /dist/
 *.zip
 
-# Logs
-*.log
+# wp-env
+.wp-env.override.json
+debug.log
+db.sql
+
+# PHPUnit
+.phpunit.result.cache
+
+# Playwright / E2E
+test-results/
+playwright-report/
+blob-report/
+tests/e2e/.auth/

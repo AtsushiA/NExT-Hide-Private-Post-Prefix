@@ -1,0 +1,20 @@
+{
+  "name": "next-hide-private-post-prefix",
+  "version": "1.1.0",
+  "description": "Hide private posts from logged-in users on the frontend",
+  "private": true,
+  "scripts": {
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "@wordpress/env": "^10.14.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.3.0"
+  },
+  "lint-staged": {
+    "*.php": "composer run phpcs --"
+  }
+}
