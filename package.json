@@ -9,7 +9,7 @@
     "prepare": "husky"
   },
   "devDependencies": {
-    "@playwright/test": "^1.49.0",
+    "@playwright/test": "^1.65.0",
     "@wordpress/env": "^10.14.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.3.0"
